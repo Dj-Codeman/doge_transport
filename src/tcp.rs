@@ -6,8 +6,7 @@ use log::*;
 
 use doge_dns::{Request, Response};
 use crate::GenericTransport;
-
-use super::{Transport, Error};
+use crate::{Transport, Error};
 
 
 /// The **TCP transport**, which sends DNS wire data over a TCP stream.

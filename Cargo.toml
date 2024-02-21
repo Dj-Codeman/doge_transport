@@ -1,7 +1,10 @@
 [package]
-name = "dns-transport"
-version = "0.2.4-beta"
+name = "doge_transport"
+version = "0.2.4"
 authors = ["Darrion Whitfield <dwhitfield@ramfield.net>"]
+homepage = "https://github.com/Dj-Codeman/doge"
+repository = "https://github.com/Dj-Codeman/doge_transport"
+license = "MIT"
 description = "The doge lib for preparing and communicating with dns servers and protocols"
 edition = "2018"
 
@@ -9,11 +12,10 @@ edition = "2018"
 doctest = false
 test = false
 
-
 [dependencies]
 
 # dns wire protocol
-doge_dns = "1.0.1"
+doge_dns = "1.0.1" # Visibility errors below 1.0.1
 
 # logging
 log = "0.4"

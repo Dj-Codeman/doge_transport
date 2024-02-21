@@ -5,7 +5,7 @@ use log::*;
 use doge_dns::{Request, Response};
 use crate::GenericTransport;
 
-use super::{Transport, Error};
+use crate::{Transport, Error};
 
 
 /// The **UDP transport**, which sends DNS wire data inside a UDP datagram.

@@ -3,7 +3,7 @@ use log::*;
 use doge_dns::{Request, Response};
 use crate::GenericTransport;
 
-use super::{Transport, Error, UdpTransport, TcpTransport};
+use crate::{Transport, Error, UdpTransport, TcpTransport};
 
 
 /// The **automatic transport**, which sends DNS wire data using the UDP

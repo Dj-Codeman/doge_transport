@@ -8,9 +8,9 @@ use log::*;
 use doge_dns::{Request, Response, WireError};
 use crate::GenericTransport;
 
-use super::{Transport, Error};
+use crate::{Transport, Error};
 
-use super::tls_stream;
+use crate::tls_stream;
 
 /// The **HTTPS transport**, which sends DNS wire data inside HTTP packets
 /// encrypted with TLS, using TCP.
