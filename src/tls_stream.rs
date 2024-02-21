@@ -1,7 +1,10 @@
+#[allow(unused)]
 use std::net::TcpStream;
-use super::Error;
-use super::HttpsTransport;
-use super::TlsTransport;
+use crate::Error;
+#[allow(unused)]
+use crate::HttpsTransport;
+#[allow(unused)]
+use crate::TlsTransport;
 
 #[cfg(any(feature = "with_nativetls", feature = "with_nativetls_vendored"))]
 fn stream_nativetls(domain: &str, port: u16) -> Result<native_tls::TlsStream<TcpStream>, Error> {
