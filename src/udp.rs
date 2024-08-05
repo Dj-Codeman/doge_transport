@@ -1,4 +1,6 @@
-use std::net::{Ipv4Addr, UdpSocket};
+use std::convert::TryInto;
+use std::net::{IpAddr, Ipv4Addr, Ipv6Addr, UdpSocket};
+use std::str::FromStr;
 
 use log::*;
 
@@ -41,9 +43,14 @@ impl UdpTransport {
 impl Transport for UdpTransport {
     fn send(&self, request: &Request) -> Result<Response, Error> {
         info!("Opening UDP socket");
-        // TODO: This will need to be changed for IPv6 support.
-        let socket = UdpSocket::bind((Ipv4Addr::UNSPECIFIED, 0))?;
-        socket.connect( (&*self.addr, self.port))?;
+        let ip_addr = IpAddr::from_str(&self.addr).expect("Failed to parse Ip addr");
+
+        let socket: UdpSocket = match ip_addr.is_ipv4() {
+            true => UdpSocket::bind((Ipv4Addr::UNSPECIFIED, 0)),
+            false => UdpSocket::bind((Ipv6Addr::UNSPECIFIED, 0)),
+        }.expect("Unknown ip format");
+
+        socket.connect( (ip_addr, self.port))?;
 
         debug!("Opened");
 

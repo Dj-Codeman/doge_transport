@@ -49,14 +49,14 @@ impl Transport for TlsTransport {
 
         let domain = self.sni_domain();
         info!("Connecting using domain {:?}", domain);
-        // comminicate that the port must EXPLICATLY BE SEPERATE
+        // communicate that the port must EXPLICITLY BE SEPARATE
         let mut stream: TlsStream<TcpStream> = Self::stream(&self.addr, self.port)?;
 
         debug!("Connected");
 
         // The message is prepended with the length when sent over TCP,
         // so the server knows how long it is (RFC 1035 §4.2.2)
-        let mut bytes_to_send = request.to_bytes().expect("failed to serialise request");
+        let mut bytes_to_send = request.to_bytes().expect("failed to serialize request");
         TcpTransport::prefix_with_length(&mut bytes_to_send);
 
         info!("Sending {} bytes of data to {} over TLS", bytes_to_send.len(), self.addr);
